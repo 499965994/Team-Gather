@@ -15,7 +15,10 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
-    "element-ui": "^2.6.0",
+    "bootstrap": "^4.3.1",
+    "distpicker": "^2.0.5",
+    "element-ui": "^2.5.4",
+    "jquery": "^3.3.1",
     "vue": "^2.5.2",
     "vue-axios": "^2.1.4",
     "vue-router": "^3.0.1"
@@ -27,6 +30,7 @@
     "babel-helper-vue-jsx-merge-props": "^2.0.3",
     "babel-jest": "^21.0.2",
     "babel-loader": "^7.1.1",
+    "babel-plugin-component": "^1.1.1",
     "babel-plugin-dynamic-import-node": "^1.2.0",
     "babel-plugin-syntax-jsx": "^6.18.0",
     "babel-plugin-transform-es2015-modules-commonjs": "^6.26.0",
