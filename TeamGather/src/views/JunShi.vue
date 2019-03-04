@@ -1,0 +1,140 @@
+<template>
+	<div><dnt></dnt>
+	<div id="container">
+		<div class="head">
+			<lunbo></lunbo>
+			<!-- 右侧新闻 -->
+			<ul class="rightclass">
+				<h1 class="hotnews">
+					<span style="background-color: #4F6341;"></span>
+					<a href="#" style="color: #4F6341;">{{newsdata[0].title}}</a></h1>
+				<h1 class="hotnews">
+					<span style="background-color: #4F6341;"></span>
+					<a href="#" style="color: #4F6341;">{{newsdata[1].title}}</a></h1>
+				<li v-for="(item,index) in newsdata" v-if="1<index&&index<9" >
+					<rightnews :rightnews="item"></rightnews>
+				</li>
+			</ul>
+		</div>
+		<!-- 即时播报 -->
+		<div class="rightnow">
+			<h4 style="color:#4F6341;">即时播报:</h4>
+			<marquee direction="left" behavior="scroll"><a v-for="(item,index) in newsdata" v-if="1<index&&index<9" href="" >{{item.title}}</a></marquee>
+		</div>
+		<!-- 中部左侧新闻切换卡 -->
+		<div class="middle">
+			<div class="middle-left">
+				<div class="itemclass" style="border-top: 2px solid #586E48;">
+					<a :class="showindex==1?active:''" @mouseenter="show">中国军情</a>
+					<a :class="showindex==2?active:''" @mouseenter="show">国际军情</a>
+					<a :class="showindex==3?active:''" @mouseenter="show">邻邦扫描</a>
+					<a :class="showindex==4?active:''" @mouseenter="show">军事集锦</a>
+				</div>
+				<div class="itemshow " v-show="showindex==1">
+					<div class="chinaitems " v-for="(item,index) in newsdata" v-if="index<maxindex" >
+						<middleleft :china="item"></middleleft>
+					</div>
+				</div>
+				<div class="itemshow " v-show="showindex==2">
+					<div class="chinaitems " v-for="(item,index) in newsdata" v-if="5<index&&index<maxindex+5" :key="index">
+						<middleleft :china="item"></middleleft>
+					</div>
+				</div>
+				<div class="itemshow " v-show="showindex==3">
+					<div class="chinaitems " v-for="(item,index) in newsdata" v-if="10<index&&index<maxindex+10" >
+						<middleleft :china="item"></middleleft>
+					</div>
+				</div>
+				<div class="itemshow " v-show="showindex==4">
+					<div class="chinaitems " v-for="(item,index) in newsdata" v-if="16<index&&index<maxindex+16" >
+						<middleleft :china="item"></middleleft>
+					</div>
+				</div>
+				<el-button type="info" @click="more">加载更多</el-button>
+			</div>
+			<div class="middle-right">
+				<!-- 中部右侧军事图文模块 -->
+				<div class="newsimg" style="border-top: 2px solid #586E48;">
+					<h3 style="color: #586E48;">军事图库</h3>
+					<div class="imgitem">
+						<div v-for="(item,index) in newsdata" v-if="0<index&&index<5">
+							<div class="imgitemone">
+										<a href=""><img :src="item.thumbnail_pic_s"></a>
+										<p>{{item.title}}</p>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- 中部右侧军事揭秘 -->
+				<div class="warscrect" style="border-top: 2px solid #586E48;">
+					<h3 style="color: #586E48;">军事揭秘</h3>
+					<ul>
+						<li v-for="(item,index) in newsdata" v-if="10<index&&index<18" >
+							<a>{{item.title}}</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div><foot></foot></div>	
+	</div>
+</template>
+
+<script>
+	// import "../src/components/junshi/junshi.js"
+	import "../components/junshi/junshi.css"
+	import junshiData from "../../data/junshidata.js"
+	import dnt from "../components/public/dht.vue"
+	import foot from "../components/public/foot.vue"
+
+	import lunbo from "../components/junshi/lunbo.vue"
+	import rightnews from "../components/junshi/rightnews.vue"
+	import middleleft from "../components/junshi/middleleft.vue"
+	// console.log(junshiData.result.data)
+	export default {
+		name: "Junshi",
+		data() {
+			return {
+				newsdata: junshiData.result.data,
+				maxindex:5,
+				showindex:1,
+				active:"active"
+			};
+		},
+		methods: {
+			more(e) {
+				this.maxindex = this.maxindex + 2;
+				if (this.maxindex > 30) {
+					e.target.disabled = true;
+				}
+			},
+			show(e){
+				switch (e.target.innerText){
+					
+					case "中国军情": this.showindex=1; break;
+					case "国际军情": this.showindex=2; break;
+					case "邻邦扫描": this.showindex=3; break;
+					case "军事集锦": this.showindex=4; break;
+
+				}
+			}
+		},
+		components:{
+			lunbo,
+			rightnews,
+			middleleft,
+			dnt,
+			foot
+		},
+		mounted:function(){
+			
+		}
+	}
+</script>
+
+<style scoped="scoped">
+
+
+</style>

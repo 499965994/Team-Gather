@@ -1,14 +1,14 @@
 <template>
-  <div style="width: 100%; background-color:#F56C6C" class="dht-C">
-    <img
+  <div style="width: 100%; background-color:#F56C6C;display: flex;align-content: center;justify-content: center;" class="dht-C">
+    <div style="width: 4%; display: flex;align-content: center;justify-content: center;"><img
       src="../../assets/xwlogo.png"
-      style="height: 60px;width:95px;position: absolute;left: 42px;top: 0px;">
+      style="height: 60px;width:60px;margin-right: 335px;"/></div>
     <el-menu
       mode="horizontal"
       background-color="#F56C6C"
       text-color="#fff"
       active-text-color="#ffd04b"
-      style="border-bottom: none;margin: 0 auto;width: 1200px;"
+      style="border-bottom: none;width: 1200px;"
     >
       <el-menu-item index="1">头条</el-menu-item>
       <el-menu-item index="2">社会</el-menu-item>

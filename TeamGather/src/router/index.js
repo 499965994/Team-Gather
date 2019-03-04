@@ -1,5 +1,9 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+
+import Junshi from '../views/JunShi.vue'
+import YuLe from "../views/YuLe.vue"
+import TiYu from "../views/TiYu.vue"
 import shouye from '@/components/shouye/shouye'
 import Womanpage from '@/views/woman'
 import Login from '@/views/loginAndregister'
@@ -33,6 +37,21 @@ export default new Router({
       path: '/',
       name: 'shouye',
       component: shouye
-    }
+    },
+    {
+  	path:"/junshi",
+			name:"Junshi",
+			component:Junshi
+		},
+		{
+			path:"/yule",
+			name:"YuLe",
+			component:YuLe
+		},
+		{
+			path:"/tiyu",
+			name:"TiYu",
+			component:TiYu
+		}
   ]
 })
