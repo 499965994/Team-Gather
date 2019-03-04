@@ -36,6 +36,9 @@ export default {
 </script>
 
 <style scoped>
+span:hover {
+  cursor: pointer;
+}
 .leftnav {
   width: 160px;
 }

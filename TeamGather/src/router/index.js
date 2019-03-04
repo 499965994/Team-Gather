@@ -1,11 +1,10 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import HelloWorld from '@/components/HelloWorld'
 import shouye from '@/components/shouye/shouye'
-import Womanpage from '@/components/woman/woman'
-import Login from '@/components/login/loginAndregister'
-import Buypage from '@/components/buy/buypage'
-import Personpage from '@/components/person/personpage'
+import Womanpage from '@/views/woman'
+import Login from '@/views/loginAndregister'
+import Buypage from '@/views/buypage'
+import Personpage from '@/views/personpage'
 Vue.use(Router)
 
 export default new Router({

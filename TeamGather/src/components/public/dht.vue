@@ -2,9 +2,7 @@
   <div style="width: 100%; background-color:#F56C6C" class="dht-C">
     <img
       src="../../assets/xwlogo.png"
-      style="width: 65px;height: 65px;position: absolute;width:95px;
-    position: absolute;
-    left: 42px;top: -3px;">
+      style="height: 60px;width:95px;position: absolute;left: 42px;top: 0px;">
     <el-menu
       mode="horizontal"
       background-color="#F56C6C"

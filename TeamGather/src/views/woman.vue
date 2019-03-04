@@ -31,12 +31,12 @@
 }
 </style>
 <script>
-import Newswithimg from './newswithimg1.vue'
-import Leftnews from './leftnews.vue'
-import Bottomnews from './bottomsnews.vue'
-import Lunbo from './lunbo.vue'
-import Header from '../public/dht'
-import Footer from '../public/foot'
+import Newswithimg from '../components/woman/newswithimg1.vue'
+import Leftnews from '../components/woman/leftnews.vue'
+import Bottomnews from '../components/woman/bottomsnews.vue'
+import Lunbo from '../components/woman/lunbo.vue'
+import Header from '../components/public/dht'
+import Footer from '../components/public/foot'
 export default {
   name: 'woman',
   data() {

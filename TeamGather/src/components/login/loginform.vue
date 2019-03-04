@@ -5,59 +5,34 @@
         <span @click="forchange1">账号登陆</span>
         <span @click="forchange2">账号注册</span>
       </div>
-      <div class="form-group">
-        <input
-          type="email"
-          class="form-control username"
-          id="exampleInputEmail1"
-          placeholder="账号"
-          v-model="username"
-        >
-      </div>
-      <div class="form-group">
-        <input
-          type="password"
-          class="form-control psw"
-          id="exampleInputPassword1"
-          placeholder="密码"
-          v-model="psw"
-        >
-      </div>
-      <button type="submit" class="btn btn-default forlogin" @click.prevent="login">登录</button>
+  <el-input v-model="login_username" placeholder="请输入账号" clearable></el-input>
+ <el-input v-model="login_psw" placeholder="请输入密码" clearable show-password></el-input>
+      <el-button  type="primary"  @click.prevent="login" class='login-form-loginbtn'>登录</el-button >
     </form>
     <form class="C-form" v-if="flag==2">
       <div class="title">
         <span @click="forchange1">账号登陆</span>
         <span @click="forchange2">账号注册</span>
       </div>
-      <div class="form-group">
-        <input type="email" class="form-control username" id="exampleInputEmail1" placeholder="账号">
-      </div>
-      <div class="form-group">
-        <input type="password" class="form-control psw" id="exampleInputPassword1" placeholder="密码">
-      </div>
-      <div class="form-group">
-        <input
-          type="password"
-          class="form-control psw"
-          id="exampleInputPassword1"
-          placeholder="手机号"
-        >
-      </div>
-      <button type="submit" class="btn btn-default forlogin" @click.prevent="register">注册</button>
+  <el-input v-model="reg_username" placeholder="账号" clearable></el-input>
+   <el-input v-model="reg_psw" placeholder="密码" clearable show-password></el-input>
+  <el-input v-model="reg_phonenum" placeholder="手机号" clearable></el-input>
+      <el-button type="primary"  @click.prevent="register" class='login-form-registerbtn'>注册</el-button>
     </form>
   </div>
 </template>
 
 <script>
-import 'bootstrap/dist/css/bootstrap.css'
 export default {
   name: 'lAndre',
   data () {
     return {
       flag: 1,
-      username: '',
-      psw: ''
+      login_username: '',
+      login_psw: '',
+      reg_username:'',
+      reg_psw:'',
+      reg_phonenum:'',
     }
   },
   methods: {
@@ -79,13 +54,19 @@ export default {
       })
     },
     login () {
-
+      console.log(666)
     }
   }
 }
 </script>
 
 <style scoped>
+.login-form-loginbtn {
+   margin-top: 20px;
+}
+.login-form-registerbtn {
+  margin-top: 20px;
+}
 .C-form {
   /* border: 1px solid #666; */
   width: 350px;
@@ -101,6 +82,7 @@ export default {
   margin-right: 20px;
   font-size: 24px;
   color: #2196f3;
+  margin-bottom: 20px;
 }
 .title:hover {
   cursor: pointer;

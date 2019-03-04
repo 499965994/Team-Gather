@@ -5,7 +5,6 @@ import ElementUI from 'element-ui'
 import App from './App'
 import 'element-ui/lib/theme-chalk/index.css'
 import axios from 'axios'
-import 'bootstrap/dist/css/bootstrap.css'
 import router from './router'
 Vue.prototype.$axios = axios
 // import ElementUI from 'element-ui'

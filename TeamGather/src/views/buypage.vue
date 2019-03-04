@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import Buyform from './buyform.vue'
+import Buyform from '../components/buy/buyform.vue'
 export default {
   name: 'buypage',
   components: {
