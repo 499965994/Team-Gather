@@ -11,6 +11,7 @@
 					<rightnews :rightnews="item"></rightnews>
 				</li>
 			</ul>
+			
 			<ul class="rightclass">
 				<h1 class="hotnews" @click="page(newsdata[9].uniquekey)">
 					<a>{{newsdata[9].title}}</a></h1>
@@ -18,6 +19,7 @@
 					<rightnews :rightnews="item"></rightnews>
 				</li>
 			</ul>
+			
 			<div class="pictext">
 				<h3 style="color: black; margin: 0px;">百家专栏</h3>
 				<div v-for="(item,index) in newsdata" v-if="10<index&&index<15" @click="page(item.uniquekey)">
@@ -26,6 +28,13 @@
 			</div>
 		</div>
 		<!-- NBA新闻模块 -->
+		<!-- 广告模块 -->
+		<div style="display: flex; width: 1200px; justify-content: space-between; align-content: center;">
+		<adswiper :adswtushudata="newsdata"></adswiper>
+		<adswiper :adswtushudata="newsdata"></adswiper>
+		<adswiper :adswtushudata="newsdata"></adswiper>
+		</div>
+		
 		<div class="nbavideo">
 			<div class="hot nba">
 				<h3 style="color: black; margin: 0px;">NBA🏀COM</h3>
@@ -123,6 +132,7 @@
 </template>
 
 <script>
+	import adswiper from "../components/public/adswiper.vue"
 	import dnt from "../components/public/dht.vue"
 	import foot from "../components/public/foot.vue"
 	import tiyudata from "../../data/tiyudata.js"
@@ -144,7 +154,7 @@
 			}
 		},
 		components:{
-			lunbo,rightnews,pictext,dnt,foot
+			lunbo,rightnews,pictext,dnt,foot,adswiper
 		}
 	}
 </script>

@@ -26,6 +26,13 @@
 			<bigview></bigview>
 		</div>
 		<!-- 中部新闻 -->
+		<!-- 广告模块 -->
+
+		<div style="display: flex; width: 1200px; justify-content: space-between; align-content: center;">
+		<adswiper :adswtushudata="newsdata"></adswiper>
+		<adswiper :adswtushudata="newsdata"></adswiper>
+		<adswiper :adswtushudata="newsdata"></adswiper>
+		</div>
 		<div class="middle">
 			<!-- 中部左侧新闻 -->
 			<div class="middle-left" style="border-top: 2px solid #C54F00;">
@@ -67,6 +74,7 @@
 </template>
 
 <script>
+	import adswiper from "../components/public/adswiper.vue"
 	import dnt from "../components/public/dht.vue"
 	import foot from "../components/public/foot.vue"
 	import "../components/yule/yule.css"
@@ -99,7 +107,8 @@
 			middleleft,
 			bigview,
 			dnt,
-			foot
+			foot,
+			adswiper
 		}
 	}
 </script>

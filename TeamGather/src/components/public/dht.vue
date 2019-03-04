@@ -10,15 +10,15 @@
       active-text-color="#ffd04b"
       style="border-bottom: none;width: 1200px;"
     >
-      <el-menu-item index="1">头条</el-menu-item>
-      <el-menu-item index="2">社会</el-menu-item>
-      <el-menu-item index="3">国内</el-menu-item>
-      <el-menu-item index="4">国际</el-menu-item>
-      <el-menu-item index="5">娱乐</el-menu-item>
-      <el-menu-item index="6">体育</el-menu-item>
-      <el-menu-item index="7">军事</el-menu-item>
-      <el-menu-item index="8">科技</el-menu-item>
-      <el-menu-item index="9">商城</el-menu-item>
+      <el-menu-item index="1"><router-link to="/">社会</router-link></el-menu-item>
+      <el-menu-item index="2"><router-link to="/woman">女人</router-link></el-menu-item>
+      <el-menu-item index="3"><router-link to="/">国内</router-link></el-menu-item>
+      <el-menu-item index="4"><router-link to="/">国际</router-link></el-menu-item>
+      <el-menu-item index="5"><router-link to="/yule">娱乐</router-link></el-menu-item>
+      <el-menu-item index="6"><router-link to="/tiyu">体育</router-link></el-menu-item>
+      <el-menu-item index="7"><router-link to="/junshi">军事</router-link></el-menu-item>
+      <el-menu-item index="8"><router-link to="/keji">科技</router-link></el-menu-item>
+      <el-menu-item index="9"><router-link to="/">商城</router-link></el-menu-item>
     </el-menu>
   </div>
   <!-- <div class='dht-C'>

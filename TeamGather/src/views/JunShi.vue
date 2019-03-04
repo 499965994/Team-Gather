@@ -21,6 +21,12 @@
 			<h4 style="color:#4F6341;">即时播报:</h4>
 			<marquee direction="left" behavior="scroll"><a v-for="(item,index) in newsdata" v-if="1<index&&index<9" href="" >{{item.title}}</a></marquee>
 		</div>
+		<!-- 广告模块 -->
+		<div style="display: flex; width: 1200px; justify-content: space-between; align-content: center;">
+		<adswiper :adswtushudata="newsdata"></adswiper>
+		<adswiper :adswtushudata="newsdata"></adswiper>
+		<adswiper :adswtushudata="newsdata"></adswiper>
+		</div>
 		<!-- 中部左侧新闻切换卡 -->
 		<div class="middle">
 			<div class="middle-left">
@@ -84,6 +90,7 @@
 
 <script>
 	// import "../src/components/junshi/junshi.js"
+	import adswiper from "../components/public/adswiper.vue"
 	import "../components/junshi/junshi.css"
 	import junshiData from "../../data/junshidata.js"
 	import dnt from "../components/public/dht.vue"
@@ -128,7 +135,8 @@
 			rightnews,
 			middleleft,
 			dnt,
-			foot
+			foot,
+			adswiper
 		},
 		mounted:function(){
 			
