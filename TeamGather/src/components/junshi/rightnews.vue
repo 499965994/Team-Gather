@@ -1,5 +1,5 @@
 <template>
-	<a href="#">{{rightnews.title}}</a>
+	<a>{{rightnews.title}}</a>
 </template>
 
 <script>

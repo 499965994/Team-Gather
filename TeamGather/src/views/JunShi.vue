@@ -5,13 +5,13 @@
 			<lunbo></lunbo>
 			<!-- 右侧新闻 -->
 			<ul class="rightclass">
-				<h1 class="hotnews">
+				<h1 class="hotnews" @click="page(newsdata[0].uniquekey)">
 					<span style="background-color: #4F6341;"></span>
-					<a href="#" style="color: #4F6341;">{{newsdata[0].title}}</a></h1>
-				<h1 class="hotnews">
+					<a style="color: #4F6341;">{{newsdata[0].title}}</a></h1>
+				<h1 class="hotnews" @click="page(newsdata[1].uniquekey)">
 					<span style="background-color: #4F6341;"></span>
-					<a href="#" style="color: #4F6341;">{{newsdata[1].title}}</a></h1>
-				<li v-for="(item,index) in newsdata" v-if="1<index&&index<9" >
+					<a style="color: #4F6341;">{{newsdata[1].title}}</a></h1>
+				<li v-for="(item,index) in newsdata" v-if="1<index&&index<9" @click="page(item.uniquekey)" >
 					<rightnews :rightnews="item"></rightnews>
 				</li>
 			</ul>
@@ -31,22 +31,22 @@
 					<a :class="showindex==4?active:''" @mouseenter="show">军事集锦</a>
 				</div>
 				<div class="itemshow " v-show="showindex==1">
-					<div class="chinaitems " v-for="(item,index) in newsdata" v-if="index<maxindex" >
+					<div class="chinaitems " v-for="(item,index) in newsdata" v-if="index<maxindex" @click="page(item.uniquekey)" >
 						<middleleft :china="item"></middleleft>
 					</div>
 				</div>
 				<div class="itemshow " v-show="showindex==2">
-					<div class="chinaitems " v-for="(item,index) in newsdata" v-if="5<index&&index<maxindex+5" :key="index">
+					<div class="chinaitems " v-for="(item,index) in newsdata" v-if="5<index&&index<maxindex+5" :key="index" @click="page(item.uniquekey)">
 						<middleleft :china="item"></middleleft>
 					</div>
 				</div>
 				<div class="itemshow " v-show="showindex==3">
-					<div class="chinaitems " v-for="(item,index) in newsdata" v-if="10<index&&index<maxindex+10" >
+					<div class="chinaitems " v-for="(item,index) in newsdata" v-if="10<index&&index<maxindex+10" @click="page(item.uniquekey)">
 						<middleleft :china="item"></middleleft>
 					</div>
 				</div>
 				<div class="itemshow " v-show="showindex==4">
-					<div class="chinaitems " v-for="(item,index) in newsdata" v-if="16<index&&index<maxindex+16" >
+					<div class="chinaitems " v-for="(item,index) in newsdata" v-if="16<index&&index<maxindex+16" @click="page(item.uniquekey)">
 						<middleleft :china="item"></middleleft>
 					</div>
 				</div>
@@ -57,9 +57,9 @@
 				<div class="newsimg" style="border-top: 2px solid #586E48;">
 					<h3 style="color: #586E48;">军事图库</h3>
 					<div class="imgitem">
-						<div v-for="(item,index) in newsdata" v-if="0<index&&index<5">
+						<div v-for="(item,index) in newsdata" v-if="0<index&&index<5" @click="page(item.uniquekey)">
 							<div class="imgitemone">
-										<a href=""><img :src="item.thumbnail_pic_s"></a>
+										<a><img :src="item.thumbnail_pic_s"></a>
 										<p>{{item.title}}</p>
 							</div>
 						</div>
@@ -70,7 +70,7 @@
 				<div class="warscrect" style="border-top: 2px solid #586E48;">
 					<h3 style="color: #586E48;">军事揭秘</h3>
 					<ul>
-						<li v-for="(item,index) in newsdata" v-if="10<index&&index<18" >
+						<li v-for="(item,index) in newsdata" v-if="10<index&&index<18" @click="page(item.uniquekey)">
 							<a>{{item.title}}</a>
 						</li>
 					</ul>
@@ -117,8 +117,10 @@
 					case "国际军情": this.showindex=2; break;
 					case "邻邦扫描": this.showindex=3; break;
 					case "军事集锦": this.showindex=4; break;
-
 				}
+			},
+			page(id){
+				console.log(id)
 			}
 		},
 		components:{

@@ -5,22 +5,22 @@
 		<div class="hot">
 			<!-- 轮播下侧新闻 -->
 			<ul class="rightclass">
-				<h1 class="hotnews">
-					<a href="#">{{newsdata[0].title}}</a></h1>
-				<li v-for="(item,index) in newsdata" v-if="0<index&&index<9">
+				<h1 class="hotnews" @click="page(newsdata[0].uniquekey)">
+					<a>{{newsdata[0].title}}</a></h1>
+				<li v-for="(item,index) in newsdata" v-if="0<index&&index<9"  @click="page(item.uniquekey)">
 					<rightnews :rightnews="item"></rightnews>
 				</li>
 			</ul>
 			<ul class="rightclass">
-				<h1 class="hotnews">
-					<a href="#">{{newsdata[9].title}}</a></h1>
-				<li v-for="(item,index) in newsdata" v-if="9<index&&index<18">
+				<h1 class="hotnews" @click="page(newsdata[9].uniquekey)">
+					<a>{{newsdata[9].title}}</a></h1>
+				<li v-for="(item,index) in newsdata" v-if="9<index&&index<18" @click="page(item.uniquekey)">
 					<rightnews :rightnews="item"></rightnews>
 				</li>
 			</ul>
 			<div class="pictext">
 				<h3 style="color: black; margin: 0px;">百家专栏</h3>
-				<div v-for="(item,index) in newsdata" v-if="10<index&&index<15">
+				<div v-for="(item,index) in newsdata" v-if="10<index&&index<15" @click="page(item.uniquekey)">
 					<pictext :picitem="item"></pictext>
 				</div>
 			</div>
@@ -31,16 +31,16 @@
 				<h3 style="color: black; margin: 0px;">NBA🏀COM</h3>
 				<hr style="background-color: #C7C7C7; width: 100%;height: 2px; border: none; margin-top: -2px;" />
 				<ul class="rightclass">
-					<h1 class="hotnews">
-						<a href="#">{{newsdata[25].title}}</a></h1>
-					<li v-for="(item,index) in newsdata" v-if="25<index&&index<30">
+					<h1 class="hotnews" @click="page(newsdata[25].uniquekey)">
+						<a>{{newsdata[25].title}}</a></h1>
+					<li v-for="(item,index) in newsdata" v-if="25<index&&index<30" @click="page(item.uniquekey)">
 						<rightnews :rightnews="item"></rightnews>
 					</li>
 				</ul>
 				<ul class="rightclass">
-					<h1 class="hotnews">
-						<a href="#">{{newsdata[10].title}}</a></h1>
-					<li v-for="(item,index) in newsdata" v-if="20<index&&index<25">
+					<h1 class="hotnews" @click="page(newsdata[10].uniquekey)">
+						<a>{{newsdata[10].title}}</a></h1>
+					<li v-for="(item,index) in newsdata" v-if="20<index&&index<25" @click="page(item.uniquekey)">
 						<rightnews :rightnews="item"></rightnews>
 					</li>
 				</ul>
@@ -92,16 +92,16 @@
 				<h3 style="color: black; margin: 0px;">国际⚽足球</h3>
 				<hr style="background-color: #C7C7C7; width: 100%;height: 2px; border: none; margin-top: -2px;" />
 				<ul>
-					<h3>
-						<a href="#">{{newsdata[5].title}}</a></h3>
-					<li v-for="(item,index) in newsdata" v-if="5<index&&index<12">
+					<h3 @click="page(newsdata[5].uniquekey)">
+						<a>{{newsdata[5].title}}</a></h3>
+					<li v-for="(item,index) in newsdata" v-if="5<index&&index<12" @click="page(item.uniquekey)">
 						<rightnews :rightnews="item"></rightnews>
 					</li>
 				</ul>
 				<ul>
-					<h3>
-						<a href="#">{{newsdata[15].title}}</a></h3>
-					<li v-for="(item,index) in newsdata" v-if="15<index&&index<22">
+					<h3 @click="page(newsdata[15].uniquekey)">
+						<a>{{newsdata[15].title}}</a></h3>
+					<li v-for="(item,index) in newsdata" v-if="15<index&&index<22" @click="page(item.uniquekey)">
 						<rightnews :rightnews="item"></rightnews>
 					</li>
 				</ul>
@@ -109,11 +109,11 @@
 			<div class="footimg">
 				<h3 style="color: black; margin: 0px;">百家专栏</h3>
 				<hr style="background-color: #C7C7C7; width: 100%;height: 2px; border: none; margin-top: -2px;" />
-				<div v-for="(item,index) in newsdata" v-if="20<index&&index<22">
+				<div v-for="(item,index) in newsdata" v-if="20<index&&index<22" @click="page(item.uniquekey)">
 					<pictext :picitem="item"></pictext>
 				</div>
 				<ul>
-					<li v-for="(item,index) in newsdata" v-if="20<index&&index<30"><a href="">{{item.title}}</a></li>
+					<li v-for="(item,index) in newsdata" v-if="20<index&&index<30" @click="page(item.uniquekey)"><a>{{item.title}}</a></li>
 				</ul>
 			</div>
 		</div>
@@ -136,6 +136,12 @@
 			return {
 				newsdata:tiyudata.result.data
 			};
+		},
+		methods:{
+			page:function(id){
+				console.log(id)
+				// 发送ajax请求去服务器请求详情页数据
+			}
 		},
 		components:{
 			lunbo,rightnews,pictext,dnt,foot

@@ -5,13 +5,13 @@
 			<lunbo></lunbo>
 			<!-- 右侧新闻 -->
 			<ul class="rightclass">
-				<h1 class="hotnews">
+				<h1 class="hotnews" @click="page(newsdata[0].uniquekey)">
 					<span></span>
-					<a href="#">{{newsdata[0].title}}</a></h1>
-				<h1 class="hotnews">
+					<a>{{newsdata[0].title}}</a></h1>
+				<h1 class="hotnews" @click="page(newsdata[1].uniquekey)">
 					<span></span>
-					<a href="#">{{newsdata[1].title}}</a></h1>
-				<li v-for="(item,index) in newsdata" v-if="1<index&&index<9">
+					<a>{{newsdata[1].title}}</a></h1>
+				<li v-for="(item,index) in newsdata" v-if="1<index&&index<9" @click="page(item.uniquekey)">
 					<rightnews :rightnews="item"></rightnews>
 				</li>
 			</ul>
@@ -30,7 +30,7 @@
 			<!-- 中部左侧新闻 -->
 			<div class="middle-left" style="border-top: 2px solid #C54F00;">
 				<div class="itemshow">
-					<div class="chinaitems " v-for="(item,index) in newsdata" v-if="index<maxindex">
+					<div class="chinaitems " v-for="(item,index) in newsdata" v-if="index<maxindex" @click="page(item.uniquekey)">
 						<middleleft :china="item"></middleleft>
 					</div>
 				</div>
@@ -41,9 +41,9 @@
 				<div class="newsimg">
 					<h3>娱乐图库</h3>
 					<div class="imgitem">
-						<div v-for="(item,index) in newsdata" v-if="20<index&&index<25">
+						<div v-for="(item,index) in newsdata" v-if="20<index&&index<25" @click="page(item.uniquekey)">
 							<div class="imgitemone">
-								<a href=""><img :src="item.thumbnail_pic_s"></a>
+								<a><img :src="item.thumbnail_pic_s"/></a>
 								<p>{{item.title}}</p>
 							</div>
 						</div>
@@ -54,7 +54,7 @@
 				<div class="warscrect">
 					<h3>娱乐大事件</h3>
 					<ul>
-						<li v-for="(item,index) in newsdata" v-if="10<index&&index<18">
+						<li v-for="(item,index) in newsdata" v-if="10<index&&index<18" @click="page(item.uniquekey)">
 							<a>{{item.title}}</a>
 						</li>
 					</ul>
@@ -88,6 +88,9 @@
 				if (this.maxindex > 30) {
 					e.target.disabled = true;
 				}
+			},
+			page(id){
+				console.log(id)
 			}
 		},
 		components: {

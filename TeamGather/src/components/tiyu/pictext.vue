@@ -1,6 +1,6 @@
 <template>
 			<div class="pictextitem">
-				<img :src="picitem.thumbnail_pic_s" alt="">
+				<img :src="picitem.thumbnail_pic_s" alt=""/>
 				<a>{{picitem.title}}</a>
 			</div>
 </template>
