@@ -29,9 +29,9 @@
 		<!-- 广告模块 -->
 
 		<div style="display: flex; width: 1200px; justify-content: space-between; align-content: center;">
-		<adswiper :adswtushudata="newsdata"></adswiper>
-		<adswiper :adswtushudata="newsdata"></adswiper>
-		<adswiper :adswtushudata="newsdata"></adswiper>
+		<adswiper :adswtushudata="newsdata.slice(0,4)"></adswiper>
+		<adswiper :adswtushudata="newsdata.slice(4,8)"></adswiper>
+		<adswiper :adswtushudata="newsdata.slice(9,13)"></adswiper>
 		</div>
 		<div class="middle">
 			<!-- 中部左侧新闻 -->
