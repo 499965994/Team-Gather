@@ -92,7 +92,7 @@
 	// import "../src/components/junshi/junshi.js"
 	import adswiper from "../components/public/adswiper.vue"
 	import "../components/junshi/junshi.css"
-	import junshiData from "../../data/junshidata.js"
+	// import junshiData from "../../data/junshidata.js"
 	import dnt from "../components/public/dht.vue"
 	import foot from "../components/public/foot.vue"
 
@@ -104,7 +104,7 @@
 		name: "Junshi",
 		data() {
 			return {
-				newsdata: junshiData.result.data,
+				newsdata:[],
 				maxindex:5,
 				showindex:1,
 				active:"active"
@@ -139,7 +139,22 @@
 			adswiper
 		},
 		mounted:function(){
-			
+			var _this=this
+			// 发送ajax请求
+			var xhr;
+			if(window.XMLHttpRequest){
+				xhr=new XMLHttpRequest()
+			}else{
+				xhr=new ActiveXObject("Microsoft XMLHTTP")
+			}
+			xhr.open("get","http://192.168.2.113:81/xwzhanshi?categoryid=18011",true)
+			xhr.send()
+			xhr.onreadystatechange=function(){
+				if(xhr.readyState==4&&xhr.status==200){
+					 
+					_this.newsdata=JSON.parse(xhr.responseText).result
+				}
+			}
 		}
 	}
 </script>

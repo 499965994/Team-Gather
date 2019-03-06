@@ -21,7 +21,7 @@
 
 <script>
 import 'distpicker'
-import 'jquery'
+import $ from 'jquery'
 export default {
   name: 'buyform',
   data () {

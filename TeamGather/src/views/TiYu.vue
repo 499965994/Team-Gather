@@ -135,16 +135,17 @@
 	import adswiper from "../components/public/adswiper.vue"
 	import dnt from "../components/public/dht.vue"
 	import foot from "../components/public/foot.vue"
-	import tiyudata from "../../data/tiyudata.js"
+	// import tiyudata from "../../data/tiyudata.js"
 	import lunbo from "../components/tiyu/lunbo.vue"
 	import rightnews from "../components/tiyu/rightnews.vue"
 	import pictext from "../components/tiyu/pictext.vue"
 	import "../components/tiyu/tiyu.css"
+	import $ from "jquery"
 
 	export default {
 		data() {
 			return {
-				newsdata:tiyudata.result.data
+				newsdata:[]
 			};
 		},
 		methods:{
@@ -155,6 +156,19 @@
 		},
 		components:{
 			lunbo,rightnews,pictext,dnt,foot,adswiper
+		},
+		mounted:function(){
+			var _this=this;
+			// jquery封装的ajax请求
+			$.ajax({
+				url:"http://192.168.2.113:81/xwzhanshi",
+				data:"categoryid=18018",
+				type:"get",
+				success:function(data){
+					_this.newsdata=data.result
+				},
+				error:function(){}
+			})
 		}
 	}
 </script>

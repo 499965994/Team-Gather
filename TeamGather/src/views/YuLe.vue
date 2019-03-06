@@ -78,7 +78,7 @@
 	import dnt from "../components/public/dht.vue"
 	import foot from "../components/public/foot.vue"
 	import "../components/yule/yule.css"
-	import yuledata from "../../data/yuledata.js"
+	// import yuledata from "../../data/yuledata.js"
 	import lunbo from "../components/yule/lunbo.vue"
 	import rightnews from "../components/yule/rightnews.vue"
 	import middleleft from "../components/yule/middleleft.vue"
@@ -86,7 +86,7 @@
 	export default {
 		data() {
 			return {
-				newsdata: yuledata.result.data,
+				newsdata: [],
 				maxindex: 5
 			};
 		},
@@ -109,6 +109,22 @@
 			dnt,
 			foot,
 			adswiper
+		},
+		mounted:function(){
+			var _this=this
+			this.$http.get("http://192.168.2.113:81/xwzhanshi",{
+				params:{
+					categoryid:18017
+				}
+			})
+			.then(function(respone){
+				console.log(respone.data.result)
+				console.log(_this.newsdata)
+				_this.newsdata=respone.data.result
+			})
+			.catch(function(error){
+				console.log(error)
+			})
 		}
 	}
 </script>
