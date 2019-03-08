@@ -150,8 +150,8 @@
 		},
 		methods:{
 			page:function(id){
-				console.log(id)
-				// 发送ajax请求去服务器请求详情页数据
+				// console.log(id)
+				window.location.href=`http://localhost:8080/#/newsabout?id=${id}`
 			}
 		},
 		components:{
@@ -161,7 +161,7 @@
 			var _this=this;
 			// jquery封装的ajax请求
 			$.ajax({
-				url:"http://192.168.2.113:81/xwzhanshi",
+				url:"http://192.168.2.105:81/xwzhanshi",
 				data:"categoryid=18018",
 				type:"get",
 				success:function(data){

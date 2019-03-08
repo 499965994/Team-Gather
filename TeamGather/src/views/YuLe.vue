@@ -98,7 +98,8 @@
 				}
 			},
 			page(id){
-				console.log(id)
+				// console.log(id)
+				window.location.href=`http://localhost:8080/#/newsabout?id=${id}`
 			}
 		},
 		components: {
@@ -112,14 +113,14 @@
 		},
 		mounted:function(){
 			var _this=this
-			this.$http.get("http://192.168.2.113:81/xwzhanshi",{
+			this.$http.get("http://192.168.2.105:81/xwzhanshi",{
 				params:{
 					categoryid:18017
 				}
 			})
 			.then(function(respone){
-				console.log(respone.data.result)
-				console.log(_this.newsdata)
+				// console.log(respone.data.result)
+				// console.log(_this.newsdata)
 				_this.newsdata=respone.data.result
 			})
 			.catch(function(error){

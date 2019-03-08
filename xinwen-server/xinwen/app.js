@@ -45,16 +45,31 @@ global.mydb = mysql.createConnection({
 });
 mydb.connect();
 
+//设置允许跨域访问该服务器
+app.all('*', function(req, res, next) {
+	res.header('Access-Control-Allow-Origin', '*');
+	//Access-Control-Allow-Headers ,可根据浏览器的F12查看,把对应的粘贴在这里就行
+	res.header('Access-Control-Allow-Headers', 'Content-Type');
+	res.header('Access-Control-Allow-Methods', '*');
+	res.header('Content-Type', 'application/json;charset=utf-8');
+	next();
+});
+
+
+
+
+
+
 // api、json导入到数据库
 // const fs =require("fs");
-// const jsonFile = './tushu/.json';//此处为你的json文件
+// const jsonFile = './yule.json';//此处为你的json文件
 // const jsonObj = JSON.parse(fs.readFileSync(jsonFile));
 // 
 // (async () => {
 //   for (let w of jsonObj.result.data) {
 //     try {
-//       let addSql = `insert into book(title,catalog,tags,sub1,sub2,img,reading,online,bytime,price,cataid) values(?,?,?,?,?,?,?,?,?,?,?)`;
-//       let addSqlParams = [w.title, w.catalog, w.tags,w.sub1,w.sub2,w.img,w.reading,w.online,w.bytime,Math.floor(Math.random()*200+1),258];
+//       let addSql = `insert into xinwenxiangqing(title,category,author_name,url,thumbnail_pic_s,thumbnail_pic_s02,thumbnail_pic_s03,date,categoryid) values(?,?,?,?,?,?,?,?,?)`;
+//       let addSqlParams = [w.title, w.title, w.category,w.author_name,w.thumbnail_pic_s,w.thumbnail_pic_s02,w.thumbnail_pic_s03,w.date,180110];
 //       await insert(addSql, addSqlParams);
 //     } catch (error) {
 //       console.log(`Error: ${error}`);
@@ -81,24 +96,201 @@ mydb.connect();
 //     }
 //   })
 // }
+
+
+
+//json更新数据库
+
+// const fs = require("fs");
+// const jsonFile = './tushu/zhongguowenxue.json'; //此处为你的json文件
+// const jsonObj = JSON.parse(fs.readFileSync(jsonFile));
 // 
+// (async () => {
+// 	for (let w of jsonObj.result.data) {
+// 		try {
+// 			// for(let i=1;i<=300;i++) { var addSql = 'update xinwenxiangqing set neirong=? where xwxqid='+i} 
+// 			let addSql = `update xinwenxiangqing set neirong=? where xwxqid=5`;
+// 			let addSqlParams = w.sub2;
+// 			await insert(addSql, addSqlParams);
+// 		} catch (error) {
+// 			console.log(`Error: ${error}`);
+// 		}
+// 	}
+// 	console.log('All completed!');
+// })();
+// 
+// function insert(addSql, addSqlParams) {
+// 	return new Promise((resolve, reject) => {
+// 		try {
+// 			mydb.query(addSql, addSqlParams, function(err, result) {
+// 				if (err) {
+// 					console.log('[INSERT ERROR] - ', err.message);
+// 					reject(err);
+// 				} else {
+// 					// console.log('INSERT ID:', result);
+// 					console.log('INSERT ID:', addSqlParams[0]);
+// 					resolve();
+// 					// insert(addSql,addSqlParams)
+// 				}
+// 			});
+// 		} catch (err) {
+// 			reject(err);
+// 		}
+// 	})
+// }
+
+
+
+//新闻展示接口
+app.get('/xwzhanshi', function(req, res) {
+	let sql = 'select * from xinwenxiangqing where categoryid=?'
+	mydb.query(sql, req.query.categoryid, function(err, result) {
+		if (err) {
+			console.log(err);
+			return;
+		} else {
+			// console.log(typeof(result))
+			res.json(
+				{result}
+			)
+		}
+	})
+})
+
+//新闻详情接口
+app.get('/xwxiangqing', function(req, res) {
+	let sql = 'select * from xinwenxiangqing where uniquekey=?'
+	mydb.query(sql, req.query.uniquekey, function(err, result) {
+		if (err) {
+			console.log(err);
+			return;
+		} else {
+			// console.log(typeof(result))
+			res.json(
+				result
+			)
+		}
+	})
+})
+
+
+//商品目录
+app.get('/bookmulu', function(req, res) {
+	let sql = 'select * from bookmulu'
+	mydb.query(sql, req.query.cataid, function(err, result) {
+		if (err) {
+			console.log(err);
+			return;
+		} else {
+			console.log(typeof(result))
+			res.json(
+				result
+			)
+		}
+	})
+})
+
+
+//商品分类展示接口
+app.get('/spzhanshi', function(req, res) {
+	let sql = 'select * from book where cataid=?'
+	mydb.query(sql, req.query.cataid, function(err, result) {
+		if (err) {
+			console.log(err);
+			return;
+		} else {
+			console.log(typeof(result))
+			res.json(
+				result
+			)
+		}
+	})
+})
+
+//商品商品详情接口
+app.get('/spxiangqing', function(req, res) {
+	let sql = 'select * from book where bookid=?'
+	mydb.query(sql, req.query.bookid, function(err, result) {
+		if (err) {
+			console.log(err);
+			return;
+		} else {
+			console.log(typeof(result))
+			res.json(
+				result
+			)
+		}
+	})
+})
+
+//用户注册接口
+app.post('/userregist', function(req, res) {
+	let userid = req.body.userid;
+	let username = req.body.username;
+	let phonenum = req.body.phonenum;
+	let userpasswd = req.body.userpasswd;
+	mydb.query('select * from user where userid=?', phonenum, function(err, result) {
+		if (err) {
+			console.log(err);
+			return;
+		}
+		if (result.length) {
+			res.json({
+				r: 'userid_has_exists'
+			});
+			return;
+		} else {
+			mydb.query('insert into user(username,userpasswd,regtime,phonenum,userid) value(?,?,now(),?,?)', [username,
+				userpasswd, phonenum, userid
+			], function(req, res) {
+				if (err) {
+					console.log(err)
+					return;
+				}
+				res.json({r:'ok'});
+			});
+		}
+	})
+})
+
+//用户登录post路由
+app.post('/userlogin', (req, res) => {
+	let userLoginData = req.body;
+	let sql = 'select * from user where phonenum = ?';
+	mydb.query(sql, [userLoginData.phonenum], (err, result) => {
+		//检查账号是否存在
+		if (result.length==0){
+			res.json({
+				r: 'phonenum_not_found'
+			});
+			return;
+		}
+		//检查密码是否正确
+		if (result[0].userpasswd!= userLoginData.userpasswd) {
+			res.json({
+				r: 'userpasswd_err'
+			});
+			return;
+		}
+		req.session.phonenum = result[0].phonenum;
+		req.session.username = result[0].username;
+		req.session.head=result[0].head;
+		//登录成功
+		res.json({
+			r: 'ok'
+		});
+	});
+})
+
+
+
+
 
 
 //模板引擎设置
 app.engine('html', ejs.renderFile); //自定义模板引擎html
 app.set('views', 'myviews'); //模板文件所在的路径
 app.set('view engine', 'html'); //注册模板引擎到express
-
-
-//设置允许跨域访问该服务器
-app.all('*', function(req, res, next) {
-	res.header('Access-Control-Allow-Origin', '*');
-	//Access-Control-Allow-Headers ,可根据浏览器的F12查看,把对应的粘贴在这里就行
-	res.header('Access-Control-Allow-Headers', 'Content-Type');
-	res.header('Access-Control-Allow-Methods', '*');
-	res.header('Content-Type', 'application/json;charset=utf-8');
-	next();
-});
 
 
 // 引入新闻api
@@ -113,7 +305,7 @@ app.all('*', function(req, res, next) {
 // 
 
 
-app.get('/',function(req,res){
+app.get('/', function(req, res) {
 	res.sendfile(__dirname + '/lssdjt.json')
 })
 // 历史上的今天api处理

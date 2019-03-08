@@ -1,4 +1,6 @@
 <template>
+	<div>
+		<dht></dht>
   <div id="loginAndregister">
     <div class="logo">
       <a href="#">
@@ -10,15 +12,17 @@
     </div>
     <Footer class='logpage-footer'/>
   </div>
+	</div>
 </template>
 
 <script>
+import dht from "../components/public/dht.vue"
 import Loginform from '../components/login/loginform.vue'
 import Footer from '../components/public/foot.vue'
 export default {
   name: 'loginAndregister',
   components: {
-    Loginform,Footer
+    Loginform,Footer,dht
   }
 }
 </script>

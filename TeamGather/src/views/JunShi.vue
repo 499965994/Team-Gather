@@ -128,7 +128,8 @@
 			},
 			page(id){
 				console.log(id)
-			}
+				window.location.href=`http://localhost:8080/#/newsabout?id=${id}`		
+				}
 		},
 		components:{
 			lunbo,
@@ -147,7 +148,7 @@
 			}else{
 				xhr=new ActiveXObject("Microsoft XMLHTTP")
 			}
-			xhr.open("get","http://192.168.2.113:81/xwzhanshi?categoryid=18011",true)
+			xhr.open("get","http://192.168.2.105:81/xwzhanshi?categoryid=18011",true)
 			xhr.send()
 			xhr.onreadystatechange=function(){
 				if(xhr.readyState==4&&xhr.status==200){
