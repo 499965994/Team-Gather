@@ -29,9 +29,9 @@
 		<!-- 广告模块 -->
 
 		<div style="display: flex; width: 1200px; justify-content: space-between; align-content: center;">
-		<adswiper :adswtushudata="newsdata.slice(0,4)"></adswiper>
-		<adswiper :adswtushudata="newsdata.slice(4,8)"></adswiper>
-		<adswiper :adswtushudata="newsdata.slice(9,13)"></adswiper>
+		<adswiper :adswtushudata="bookabout.slice(0,4)"></adswiper>
+		<adswiper :adswtushudata="bookabout.slice(4,8)"></adswiper>
+		<adswiper :adswtushudata="bookabout.slice(9,13)"></adswiper>
 		</div>
 		<div class="middle">
 			<!-- 中部左侧新闻 -->
@@ -87,7 +87,8 @@
 		data() {
 			return {
 				newsdata: [],
-				maxindex: 5
+				maxindex: 5,
+				bookabout:[]
 			};
 		},
 		methods: {
@@ -126,6 +127,20 @@
 			.catch(function(error){
 				console.log(error)
 			})
+			
+			
+			
+			var xhr2=new XMLHttpRequest()
+			xhr2.open("get","http://192.168.2.105:81/spzhanshi?cataid=248",true)
+			xhr2.send()
+			xhr2.onreadystatechange=function(){
+				if(xhr2.readyState==4&&xhr2.status==200){
+					// console.log(JSON.parse(xhr.responseText))
+					_this.bookabout=JSON.parse(xhr2.responseText)
+					console.log(_this.bookabout)
+					
+				}
+			}
 		}
 	}
 </script>

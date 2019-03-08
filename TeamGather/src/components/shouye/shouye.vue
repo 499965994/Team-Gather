@@ -56,6 +56,7 @@
 					<div class="htbox">
 						<h2>历史上的今天</h2>
 						<p>{{item.title}}</p>
+						<img :src="item.pic" alt="">
 						<p>{{item.des}}</p>
 					</div>
 				</div>
@@ -88,7 +89,7 @@
 						<adswiper v-bind:adswtushudata="tushudata"></adswiper>
 						<div class="htbox">
 							<h2>历史上的今天</h2>
-							<p>{{item.title}}</p>
+							<img :src="item.pic" alt="">
 							<p>{{item.des}}</p>
 						</div>
 
@@ -144,18 +145,18 @@
 		methods: {
 			getlishi() {
 				var mydate = new Date();
-				this.$axios.get("http://localhost:81/", {
+				this.$axios.get("http://192.168.2.105:81/", {
 					params: {
 						v: 1,
 						month: mydate.getMonth() + 1,
 						day: mydate.getDate()
 					}
 				}).then(response => {
-					console.log("get发送Ajax请求成功", response.data);
+					// console.log("get发送Ajax请求成功", response.data);
 					this.lishidata = response.data.result;
-					console.log(this.lishidata)
+					// console.log(this.lishidata)
 				}).catch(response => {
-					console.log("get发送Ajax请求失败", response);
+					// console.log("get发送Ajax请求失败", response);
 				})
 			}
 		},
