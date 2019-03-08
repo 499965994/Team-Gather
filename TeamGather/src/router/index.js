@@ -1,5 +1,14 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import guonei from '../../views/guonei'
+import guoji from '../../views/guoji'
+import shehui from '../../views/shehui'
+import xiangqing from '../../views/xiangqing'
+import shangcheng from '../../views/shangcheng'
+import gouwuche from '@/components/gouwuche'
+
+
+
 import Junshi from '../views/JunShi.vue'
 import YuLe from "../views/YuLe.vue"
 import TiYu from "../views/TiYu.vue"
@@ -56,6 +65,32 @@ export default new Router({
 			path:"/newsabout",
 			name:"Newsabout",
 			component:Newsabout
+		},
+				{
+			path:'/guoji',
+			name:'gouji',
+			component:guoji
+			
+		},
+		{
+			path:'/guonei',
+			name:'guonei',
+			component:guonei
+		},
+		{
+			path:'/shehui',
+			name:'shehui',
+			component:shehui
+		},
+		{
+			path:'/xiangqing',
+			name:'xiangqing',
+			component:xiangqing
+		},
+		{
+			path:'/shangcheng',
+			name:'shangcheng',
+			component:shangcheng
 		}
   ]
 })
