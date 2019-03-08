@@ -162,7 +162,7 @@
 			var _this=this;
 			// jquery封装的ajax请求
 			$.ajax({
-				url:"http://192.168.2.105:81/xwzhanshi",
+				url:"http://192.168.1.125:81/xwzhanshi",
 				data:"categoryid=18018",
 				type:"get",
 				success:function(data){
@@ -173,7 +173,7 @@
 			
 			
 			var xhr2=new XMLHttpRequest()
-			xhr2.open("get","http://192.168.2.105:81/spzhanshi?cataid=244",true)
+			xhr2.open("get","http://192.168.1.125:81/spzhanshi?cataid=244",true)
 			xhr2.send()
 			xhr2.onreadystatechange=function(){
 				if(xhr2.readyState==4&&xhr2.status==200){

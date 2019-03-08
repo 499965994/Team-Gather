@@ -32,9 +32,9 @@
 				<div class="shangping">
 					<div class="title">
 						<h3>相关书籍推荐</h3>
-						<show></show>
-						<show></show>
-						<show></show>
+						<show :adswtushudata="bookabout.slice(0,5)"></show>
+						<show :adswtushudata="bookabout.slice(10,15)"></show>
+						<show :adswtushudata="bookabout.slice(20,25)"></show>
 					</div>
 				</div>
 			</div>
@@ -57,6 +57,7 @@
 		data: function(){
 			return {
 				lists: [],
+				bookabout:[],
 				mysrc1: "https://img2.utuku.china.com/500x308/news/20190224/7ad9a368-284f-4dbc-9bec-bcd248231282.jpg",
 				mysrc2: "https://img3.utuku.china.com/300x180/news/20190224/df863dde-b34d-4559-93a6-19702d461185.jpg",
 				mysrc3: "https://img1.utuku.china.com/300x180/news/20190224/780b4dc6-c547-430b-9ad0-d765f6e3afe9.jpg"
@@ -87,12 +88,25 @@
 			}else{
 				xhr=new ActiveXObject("Microsoft XMLHTTP")
 			}
-			xhr.open("get","http://192.168.2.105:81/xwzhanshi?categoryid=18016",true)
+			xhr.open("get","http://192.168.1.125:81/xwzhanshi?categoryid=18016",true)
 			xhr.send()
 			xhr.onreadystatechange=function(){
 				if(xhr.readyState==4&&xhr.status==200){
 					 
 					_this.lists=JSON.parse(xhr.responseText).result
+				}
+			}
+			
+			
+			var xhr2=new XMLHttpRequest()
+			xhr2.open("get","http://192.168.1.125:81/spzhanshi?cataid=245",true)
+			xhr2.send()
+			xhr2.onreadystatechange=function(){
+				if(xhr2.readyState==4&&xhr2.status==200){
+					// console.log(JSON.parse(xhr.responseText))
+					_this.bookabout=JSON.parse(xhr2.responseText)
+					// console.log(_this.bookabout)
+					
 				}
 			}
 

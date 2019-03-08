@@ -53,9 +53,9 @@
 						<div display='block'><h3 class="h3title">相关书籍推荐</h3></div>
 						
 					</div>
-					<show></show>
-					<show></show>
-					<show></show>
+					<show :adswtushudata="bookabout.slice(0,4)"></show>
+					<show :adswtushudata="bookabout.slice(5,9)"></show>
+					<show :adswtushudata="bookabout.slice(15,20)"></show>
 					<hr>
 				</div>
 			</div>
@@ -87,7 +87,8 @@
 				}, {
 					src: "http://edge.ivideo.sina.com.cn/194000903.mp4?KID=sina,viask&Expires=1552147200&ssig=cKNsFcFpyX",
 					title: "普京送妇女节祝福：春天为女性生辉 被你们的笑容照亮"
-				}]
+				}],
+				bookabout:[]
 			}
 		},
 		components: {
@@ -113,12 +114,25 @@
 			}else{
 				xhr=new ActiveXObject("Microsoft XMLHTTP")
 			}
-			xhr.open("get","http://192.168.2.105:81/xwzhanshi?categoryid=18013",true)
+			xhr.open("get","http://192.168.1.125:81/xwzhanshi?categoryid=18013",true)
 			xhr.send()
 			xhr.onreadystatechange=function(){
 				if(xhr.readyState==4&&xhr.status==200){
 					 
 					_this.list=JSON.parse(xhr.responseText).result
+				}
+			}
+			
+			
+			var xhr2=new XMLHttpRequest()
+			xhr2.open("get","http://192.168.1.125:81/spzhanshi?cataid=248",true)
+			xhr2.send()
+			xhr2.onreadystatechange=function(){
+				if(xhr2.readyState==4&&xhr2.status==200){
+					// console.log(JSON.parse(xhr.responseText))
+					_this.bookabout=JSON.parse(xhr2.responseText)
+					// console.log(_this.bookabout)
+					
 				}
 			}
 

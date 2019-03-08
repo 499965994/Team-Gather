@@ -1,5 +1,5 @@
 <template>
-	<div>
+	<div id="shangcheng">
 		<myheader></myheader>
 		<div id="shangchengapp">
 			<el-row>
@@ -20,7 +20,7 @@
 				<el-col :span="6">
 					<div class="grid-content bg-purple-dark">
 						<audio src="http://180k.ysts8.com:8000/%E7%99%BE%E5%AE%B6%E8%AE%B2%E5%9D%9B/%E8%AF%97%E7%BB%8F%E4%B8%AD%E7%9A%84%E4%B8%8D%E8%80%81%E7%88%B1%E6%83%85/001.mp3?1403353088143x1551347974x1403359218803-4267fe1f68b0adc0bb5fc49485f9e64d?3"
-						 controls autoplay="true"></audio>
+						 controls autoplay="true" muted="muted"></audio>
 					</div>
 				</el-col>
 			</el-row>
@@ -83,7 +83,7 @@
 	import dan from "../src/components/dan.vue"
 	import gouwuche from "../src/components/gouwuche.vue"
 	import mytop from "../src/components/mytop.vue"
-	import tankuang from "../src/components/tankuang.vue"
+	// import tankuang from "../src/components/tankuang.vue"
 	import myheader from '../src/components/public/dht.vue'
 	import myfoot from '../src/components/public/foot.vue'
 	// import data2 from '../data/tushu.js'
@@ -161,7 +161,7 @@
 		}else{
 			xhr=new ActiveXObject("Microsoft XMLHTTP")
 		}
-		xhr.open("get","http://192.168.2.105:81/spzhanshi?cataid=242",true)
+		xhr.open("get","http://192.168.1.125:81/spzhanshi?cataid=242",true)
 		xhr.send()
 		xhr.onreadystatechange=function(){
 			if(xhr.readyState==4&&xhr.status==200){

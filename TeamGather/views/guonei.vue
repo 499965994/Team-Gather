@@ -42,9 +42,9 @@
 					<div v-for="item in newslist" @click="funguonei(item.uniquekey)"><info :item="item"></info></div>
 				</div>
 				<div>
-					<show></show>
-					<show></show>
-					<show></show>
+					<show :adswtushudata="bookabout.slice(0,4)"></show>
+					<show :adswtushudata="bookabout.slice(5,10)"></show>
+					<show :adswtushudata="bookabout.slice(20,25)"></show>
 				</div>
 			</div>
 		</div>
@@ -66,6 +66,7 @@
 		data:function (){
 			return {
 				newslist:[],
+				bookabout:[],
 				uniquekey:"",
 					list:[{
 						src:"https://k.sinaimg.cn/n/news/1_img/vcg/6d34f853/539/w814h525/20190225/d8AE-htptaqe0742361.jpg/w500h333l80255.jpg",
@@ -111,12 +112,26 @@
 			}else{
 				xhr=new ActiveXObject("Microsoft XMLHTTP")
 			}
-			xhr.open("get","http://192.168.2.105:81/xwzhanshi?categoryid=18014",true)
+			xhr.open("get","http://192.168.1.125:81/xwzhanshi?categoryid=18014",true)
 			xhr.send()
 			xhr.onreadystatechange=function(){
 				if(xhr.readyState==4&&xhr.status==200){
 					 
 					_this.newslist=JSON.parse(xhr.responseText).result
+				}
+			}
+			
+			
+			
+			var xhr2=new XMLHttpRequest()
+			xhr2.open("get","http://192.168.1.125:81/spzhanshi?cataid=250",true)
+			xhr2.send()
+			xhr2.onreadystatechange=function(){
+				if(xhr2.readyState==4&&xhr2.status==200){
+					// console.log(JSON.parse(xhr.responseText))
+					_this.bookabout=JSON.parse(xhr2.responseText)
+					// console.log(_this.bookabout)
+					
 				}
 			}
 			}

@@ -5,7 +5,6 @@ import guoji from '../../views/guoji'
 import shehui from '../../views/shehui'
 import xiangqing from '../../views/xiangqing'
 import shangcheng from '../../views/shangcheng'
-import gouwuche from '@/components/gouwuche'
 
 
 

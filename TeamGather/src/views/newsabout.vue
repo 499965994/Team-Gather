@@ -58,7 +58,7 @@
 			}else{
 				xhr=new ActiveXObject("Microsoft XMLHTTP")
 			}
-			xhr.open("get",`http://192.168.2.105:81/xwxiangqing?uniquekey=${value}`,true)
+			xhr.open("get",`http://192.168.1.125:81/xwxiangqing?uniquekey=${value}`,true)
 			xhr.send()
 			xhr.onreadystatechange=function(){
 				if(xhr.readyState==4&&xhr.status==200){

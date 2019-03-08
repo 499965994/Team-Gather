@@ -92,10 +92,7 @@
 							<img :src="item.pic" alt="">
 							<p>{{item.des}}</p>
 						</div>
-
 					</div>
-
-
 				</div>
 
 
@@ -145,7 +142,7 @@
 		methods: {
 			getlishi() {
 				var mydate = new Date();
-				this.$axios.get("http://192.168.2.105:81/", {
+				this.$axios.get("http://192.168.1.125:81/", {
 					params: {
 						v: 1,
 						month: mydate.getMonth() + 1,
@@ -233,7 +230,7 @@
 
 	#mainbox {
 		margin: 0 auto;
-		margin-top: 5.5625rem;
+		/* margin-top: 5.5625rem; */
 		padding: 0;
 		width: 75rem;
 	}
