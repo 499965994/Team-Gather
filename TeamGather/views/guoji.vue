@@ -114,7 +114,7 @@
 			}else{
 				xhr=new ActiveXObject("Microsoft XMLHTTP")
 			}
-			xhr.open("get","http://192.168.1.125:81/xwzhanshi?categoryid=18013",true)
+			xhr.open("get","http://192.168.2.103:81/xwzhanshi?categoryid=18013",true)
 			xhr.send()
 			xhr.onreadystatechange=function(){
 				if(xhr.readyState==4&&xhr.status==200){
@@ -125,7 +125,7 @@
 			
 			
 			var xhr2=new XMLHttpRequest()
-			xhr2.open("get","http://192.168.1.125:81/spzhanshi?cataid=248",true)
+			xhr2.open("get","http://192.168.2.103:81/spzhanshi?cataid=248",true)
 			xhr2.send()
 			xhr2.onreadystatechange=function(){
 				if(xhr2.readyState==4&&xhr2.status==200){

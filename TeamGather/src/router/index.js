@@ -17,6 +17,9 @@ import Login from '@/views/loginAndregister'
 import Buypage from '@/views/buypage'
 import Personpage from '@/views/personpage'
 import Newsabout from "@/views/newsabout"
+
+import Video from "@/views/video"
+
 Vue.use(Router)
 export default new Router({
   routes: [
@@ -90,6 +93,11 @@ export default new Router({
 			path:'/shangcheng',
 			name:'shangcheng',
 			component:shangcheng
+		},
+		{
+			path:"/video",
+			name:'Video',
+			component:Video
 		}
   ]
 })

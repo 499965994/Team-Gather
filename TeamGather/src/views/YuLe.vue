@@ -114,7 +114,7 @@
 		},
 		mounted:function(){
 			var _this=this
-			this.$http.get("http://192.168.1.125:81/xwzhanshi",{
+			this.$http.get("http://192.168.2.103:81/xwzhanshi",{
 				params:{
 					categoryid:18017
 				}
@@ -131,7 +131,7 @@
 			
 			
 			var xhr2=new XMLHttpRequest()
-			xhr2.open("get","http://192.168.1.125:81/spzhanshi?cataid=248",true)
+			xhr2.open("get","http://192.168.2.103:81/spzhanshi?cataid=248",true)
 			xhr2.send()
 			xhr2.onreadystatechange=function(){
 				if(xhr2.readyState==4&&xhr2.status==200){

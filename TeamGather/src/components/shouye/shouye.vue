@@ -142,7 +142,7 @@
 		methods: {
 			getlishi() {
 				var mydate = new Date();
-				this.$axios.get("http://192.168.1.125:81/", {
+				this.$axios.get("http://192.168.2.103:81/", {
 					params: {
 						v: 1,
 						month: mydate.getMonth() + 1,

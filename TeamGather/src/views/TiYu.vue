@@ -57,40 +57,10 @@
 			<div class="video">
 				<h3 style="color: black; margin: 0px;">视频专栏</h3>
 				<hr style="background-color: #C7C7C7; width: 100%;height: 2px; border: none; margin-top: -2px;" />
-				<div class="videoitem">
-					<video src="http://f10.v1.cn/site/15568502.mp4.f40.mp4" muted="muted" autoplay="autoplay" loop="loop"></video>
+				<div class="videoitem" v-for="item in videoitem" @click="videoabout(item.id)">
+					<video :src="item.src" muted="muted" autoplay="autoplay" loop="loop"></video>
 					<a>
-						<h3>流浪汉捡到2000元钱包 分文未动上交警察</h3>
-					</a>
-				</div>
-				<div class="videoitem">
-					<video src="http://f10.v1.cn/site/15568700.mp4.f40.mp4" muted="muted" autoplay="autoplay" loop="loop"></video>
-					<a>
-						<h3>男子将打火机扔进火锅 200℃热油爆炸溅出</h3>
-					</a>
-				</div>
-				<div class="videoitem">
-					<video src="http://f10.v1.cn/site/15563685.mp4.f40.mp4" muted="muted" autoplay="autoplay" loop="loop"></video>
-					<a>
-						<h3>男孩当街被泼胶水 警方：肇事者有智力障碍</h3>
-					</a>
-				</div>
-				<div class="videoitem">
-					<video src="http://f10.v1.cn/site/15563656.mp4.f40.mp4" muted="muted" autoplay="autoplay" loop="loop"></video>
-					<a>
-						<h3>情绪激动 女乘客拿应急锤猛砸动车玻璃</h3>
-					</a>
-				</div>
-				<div class="videoitem">
-					<video src="http://f10.v1.cn/site/15569197.mp4.f40.mp4" muted="muted" autoplay="autoplay" loop="loop"></video>
-					<a>
-						<h3>男子酒后免费帮人代驾 路遇例行检查被查</h3>
-					</a>
-				</div>
-				<div class="videoitem">
-					<video src="http://f10.v1.cn/site/15568848.mp4.f40.mp4" muted="muted" autoplay="autoplay" loop="loop"></video>
-					<a>
-						<h3>关门抄不了近路 居民向隔壁小区扔垃圾发泄</h3>
+						<h3>{{item.title}}</h3>
 					</a>
 				</div>
 			</div>
@@ -146,13 +116,17 @@
 		data() {
 			return {
 				newsdata:[],
-				bookabout:[]
+				bookabout:[],
+				videoitem:[]
 			};
 		},
 		methods:{
 			page:function(id){
 				// console.log(id)
 				window.location.href=`http://localhost:8080/#/newsabout?id=${id}`
+			},
+			videoabout:function(id){
+				window.location.href=`http://localhost:8080/#/video?id=${id}`
 			}
 		},
 		components:{
@@ -162,7 +136,7 @@
 			var _this=this;
 			// jquery封装的ajax请求
 			$.ajax({
-				url:"http://192.168.1.125:81/xwzhanshi",
+				url:"http://192.168.2.103:81/xwzhanshi",
 				data:"categoryid=18018",
 				type:"get",
 				success:function(data){
@@ -173,7 +147,7 @@
 			
 			
 			var xhr2=new XMLHttpRequest()
-			xhr2.open("get","http://192.168.1.125:81/spzhanshi?cataid=244",true)
+			xhr2.open("get","http://192.168.2.103:81/spzhanshi?cataid=244",true)
 			xhr2.send()
 			xhr2.onreadystatechange=function(){
 				if(xhr2.readyState==4&&xhr2.status==200){
@@ -183,6 +157,20 @@
 					
 				}
 			}
+			
+			
+			var xhr3=new XMLHttpRequest()
+			xhr3.open("get","http://192.168.2.103:81/video",true)
+			xhr3.send()
+			xhr3.onreadystatechange=function(){
+				if(xhr3.readyState==4&&xhr3.status==200){
+					// console.log(JSON.parse(xhr.responseText))
+					_this.videoitem=JSON.parse(xhr3.responseText)
+					console.log(_this.videoitem)
+					
+				}
+			}
+			
 		}
 	}
 </script>

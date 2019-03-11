@@ -161,7 +161,7 @@
 		}else{
 			xhr=new ActiveXObject("Microsoft XMLHTTP")
 		}
-		xhr.open("get","http://192.168.1.125:81/spzhanshi?cataid=242",true)
+		xhr.open("get","http://192.168.2.103:81/spzhanshi?cataid=242",true)
 		xhr.send()
 		xhr.onreadystatechange=function(){
 			if(xhr.readyState==4&&xhr.status==200){
